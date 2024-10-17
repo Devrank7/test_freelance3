@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Загрузка PDF файла</title>
+    <script>
+        function updateFormAction() {
+            var checkbox = document.getElementById("redirectCheckbox");
+            var form = document.getElementById("uploadForm");
+
+            if (checkbox.checked) {
+                form.action = "/freelance/upload";
+            } else {
+                form.action = "/upload";
+            }
+        }
+        window.onload = function() {
+            updateFormAction();
+        }
+    </script>
+</head>
+<body>
+<h1>Загрузка PDF файла</h1>
+<form id="uploadForm" action="/freelance/upload" enctype="multipart/form-data" method="post">
+    <input name="pdf_file" type="file" accept=".pdf">
+    <br><br>
+    <label>
+        <input type="checkbox" id="redirectCheckbox" onchange="updateFormAction()">
+        Загрузить на /freelance/upload
+    </label>
+    <br><br>
+    <input type="submit" value="Загрузить">
+</form>
+</body>
+</html>
